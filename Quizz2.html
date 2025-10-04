@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Power BI - Zone à gratter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f8fa;
+      text-align: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #f2b800;
+    }
+    .card {
+      margin: 20px auto;
+      width: 320px;
+    }
+    .question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    canvas {
+      border: 2px solid #444;
+      cursor: crosshair;
+    }
+  </style>
+</head>
+<body>
+  <h1>🤔 Quiz Power BI - Qui suis-je ?</h1>
+  <p>Grattez avec la souris pour révéler la réponse !</p>
+
+  <div class="card">
+    <div class="question">Je nettoie et transforme les données avant de les présenter. Qui suis-je ?</div>
+    <canvas id="scratch1" width="320" height="100"></canvas>
+  </div>
+
+  <div class="card">
+    <div class="question">Je préfère les mesures aux colonnes calculées, qui suis-je ?</div>
+    <canvas id="scratch2" width="320" height="100"></canvas>
+  </div>
+
+  <script>
+    function initScratch(canvasId, answerText) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext("2d");
+
+      // Mettre la réponse sous la couche grise
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "black";
+      ctx.font = "20px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(answerText, canvas.width / 2, canvas.height / 2);
+
+      // Dessiner la couche "à gratter"
+      const cover = document.createElement("canvas");
+      cover.width = canvas.width;
+      cover.height = canvas.height;
+      const coverCtx = cover.getContext("2d");
+      coverCtx.fillStyle = "#bbb";
+      coverCtx.fillRect(0, 0, cover.width, cover.height);
+
+      ctx.drawImage(cover, 0, 0);
+
+      let isDrawing = false;
+
+      function scratch(e) {
+        if (!isDrawing) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = (e.clientX || e.touches[0].clientX) - rect.left;
+        const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+        ctx.globalCompositeOperation = "destination-out";
+        ctx.beginPath();
+        ctx.arc(x, y, 15, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      canvas.addEventListener("mousedown", () => { isDrawing = true; });
+      canvas.addEventListener("mouseup", () => { isDrawing = false; });
+      canvas.addEventListener("mousemove", scratch);
+
+      canvas.addEventListener("touchstart", () => { isDrawing = true; });
+      canvas.addEventListener("touchend", () => { isDrawing = false; });
+      canvas.addEventListener("touchmove", scratch);
+    }
+
+    // Initialisation des cartes
+    initScratch("scratch1", "👉 Power Query");
+    initScratch("scratch2", "👉 DAX");
+  </script>
+</body>
+</html>
