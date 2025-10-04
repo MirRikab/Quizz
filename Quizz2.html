@@ -16,140 +16,227 @@
     .card {
       margin: 25px auto;
       width: 340px;
-      position: relative;
     }
-    canvas {
+    .question {
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .scratch-container {
+      position: relative;
+      width: 340px;
+      height: 100px;
+    }
+
+    .answer {
+      width: 100%;
+      height: 100%;
+      background: #fff;
       border: 2px solid #444;
-      touch-action: none; /* empêche le scroll tactile */
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+      cursor: crosshair;
+      transition: opacity 0.6s ease-out;
     }
   </style>
 </head>
 <body>
   <h1>🤔 Quiz Power BI - Qui suis-je ?</h1>
-  <p>Grattez pour révéler la question et la réponse (bonne pratique) !</p>
+  <p>Grattez pour révéler la réponse (et la bonne pratique) !</p>
 
   <div class="card">
-    <canvas id="scratch1" width="340" height="100"></canvas>
+    <div class="question">1️⃣ Je nettoie et transforme les données avant de les présenter. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Power Query (Bonne pratique : nettoyez vos données à la source)</div>
+      <canvas id="scratch1"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch2" width="340" height="100"></canvas>
+    <div class="question">2️⃣ Je préfère les mesures aux colonnes calculées. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 DAX (Bonne pratique : privilégiez les mesures pour de meilleures performances)</div>
+      <canvas id="scratch2"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch3" width="340" height="100"></canvas>
+    <div class="question">3️⃣ Je ressemble à une table Excel, mais j’ai plus de relations que vous sur LinkedIn. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Modèle de données (Bonne pratique : utilisez un modèle en étoile)</div>
+      <canvas id="scratch3"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch4" width="340" height="100"></canvas>
+    <div class="question">4️⃣ Je vis dans le cloud, mais je ne pleut pas. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Power BI Service (Bonne pratique : sécurisez vos espaces de travail)</div>
+      <canvas id="scratch4"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch5" width="340" height="100"></canvas>
+    <div class="question">5️⃣ Je suis le bouton magique pour “tout voir d’un coup”. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Dashboard (Bonne pratique : limitez le nombre de visuels, restez clair)</div>
+      <canvas id="scratch5"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch6" width="340" height="100"></canvas>
+    <div class="question">6️⃣ Quand je disparais, tout le monde panique : “Mais où sont mes filtres ?!” Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Slicer (Bonne pratique : organisez vos filtres pour guider l’utilisateur)</div>
+      <canvas id="scratch6"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch7" width="340" height="100"></canvas>
+    <div class="question">7️⃣ Je suis le donut préféré des data analysts (mais indigeste au-delà de 5 parts). Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Graphique donut (Bonne pratique : max 5 catégories sinon passez à la barre/colonne)</div>
+      <canvas id="scratch7"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch8" width="340" height="100"></canvas>
+    <div class="question">8️⃣ Je suis l’horloge interne de ton rapport. Si tu m’oublies, tes données restent figées. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Actualisation planifiée (Bonne pratique : surveillez vos refresh et planifiez intelligemment)</div>
+      <canvas id="scratch8"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch9" width="340" height="100"></canvas>
+    <div class="question">9️⃣ Je décide si vos données sont joliment alignées… mais en bidirectionnel, je suis rarement une bonne idée. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Relations (Bonne pratique : privilégiez les relations unidirectionnelles)</div>
+      <canvas id="scratch9"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch10" width="340" height="100"></canvas>
+    <div class="question">🔟 Je rends vos rapports aussi faciles à naviguer que Netflix. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Signets & Onglets (Bonne pratique : rendez la navigation intuitive)</div>
+      <canvas id="scratch10"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch11" width="340" height="100"></canvas>
+    <div class="question">11️⃣ Je suis le petit disque que tu oublies toujours de cliquer avant de fermer ton rapport. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Bouton Enregistrer (Bonne pratique : sauvegardez régulièrement 😅)</div>
+      <canvas id="scratch11"></canvas>
+    </div>
   </div>
+
   <div class="card">
-    <canvas id="scratch12" width="340" height="100"></canvas>
+    <div class="question">12️⃣ J’arrive toujours en retard, mais quand je suis là, toutes tes données sont à jour. Qui suis-je ?</div>
+    <div class="scratch-container">
+      <div class="answer">👉 Refresh planifié (Bonne pratique : planifiez vos actualisations régulièrement)</div>
+      <canvas id="scratch12"></canvas>
+    </div>
   </div>
 
   <script>
-    const cards = [
-      "1. Je nettoie et transforme les données avant de les présenter.\n👉 Power Query (Bonne pratique : toujours nettoyer vos données à la source)",
-      "2. Je préfère les mesures aux colonnes calculées.\n👉 DAX (Bonne pratique : privilégier les mesures pour de meilleures performances)",
-      "3. Je ressemble à une table Excel, mais j’ai plus de relations que vous sur LinkedIn.\n👉 Modèle de données (Bonne pratique : utilisez un modèle en étoile, pas spaghetti)",
-      "4. Je vis dans le cloud, mais je ne pleut pas.\n👉 Power BI Service (Bonne pratique : sécurisez vos espaces de travail et vos partages)",
-      "5. Je suis le bouton magique pour “tout voir d’un coup”.\n👉 Dashboard (Bonne pratique : limitez le nombre de visuels, restez clair)",
-      "6. Quand je disparais, tout le monde panique : “Mais où sont mes filtres ?!”\n👉 Slicer (Bonne pratique : organisez vos filtres pour guider l’utilisateur)",
-      "7. Je suis le donut préféré des data analysts (mais indigeste au-delà de 5 parts).\n👉 Graphique donut (Bonne pratique : max 5 catégories sinon passez à la barre/colonne)",
-      "8. Je suis l’horloge interne de ton rapport. Si tu m’oublies, tes données restent figées.\n👉 Actualisation planifiée (Bonne pratique : surveillez vos refresh et planifiez intelligemment)",
-      "9. Je décide si vos données sont joliment alignées… mais en bidirectionnel, je suis rarement une bonne idée.\n👉 Relations (Bonne pratique : privilégiez les relations unidirectionnelles, le bidirectionnel est à utiliser avec modération)",
-      "10. Je rends vos rapports aussi faciles à naviguer que Netflix.\n👉 Signets & Onglets (Bonne pratique : rendez la navigation intuitive pour l’utilisateur)",
-      "11. Je suis le petit disque que tu oublies toujours de cliquer avant de fermer ton rapport.\n👉 Bouton Enregistrer (Bonne pratique : sauvegardez régulièrement avant de publier 😅)",
-      "12. J’arrive toujours en retard, mais quand je suis là, toutes tes données sont à jour.\n👉 Refresh planifié (Bonne pratique : configurez un horaire régulier pour éviter les mauvaises surprises)"
-    ];
-
-    function initScratch(canvasId, text) {
+    function initScratch(canvasId) {
       const canvas = document.getElementById(canvasId);
       const ctx = canvas.getContext("2d");
 
-      // Écrire la question + réponse sur le canvas
-      ctx.fillStyle = "#000";
-      ctx.font = "14px Arial";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      const lines = text.split("\n");
-      const lineHeight = 18;
-      const startY = canvas.height / 2 - (lines.length-1) * lineHeight / 2;
-      lines.forEach((line, i) => {
-        ctx.fillText(line, canvas.width/2, startY + i*lineHeight);
-      });
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width;
+      canvas.height = rect.height;
 
-      // Couche grise au-dessus
-      ctx.globalCompositeOperation = "source-over";
-      ctx.fillStyle = "#bbb";
-      ctx.fillRect(0,0,canvas.width,canvas.height);
+      // Couche grise avec dégradé léger
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      gradient.addColorStop(0, "#ccc");
+      gradient.addColorStop(1, "#999");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       let isDrawing = false;
 
-      function getXY(e){
+      function getXY(e) {
         const rect = canvas.getBoundingClientRect();
         const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
         const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
-        return {x,y};
+        return { x, y };
       }
 
-      function startScratch(e){
+      function startScratch(e) {
         e.preventDefault();
         isDrawing = true;
-        const {x,y} = getXY(e);
         ctx.globalCompositeOperation = "destination-out";
+        const { x, y } = getXY(e);
         ctx.beginPath();
-        ctx.moveTo(x,y);
+        ctx.moveTo(x, y);
       }
 
-      function drawScratch(e){
-        if(!isDrawing) return;
+      function drawScratch(e) {
+        if (!isDrawing) return;
         e.preventDefault();
-        const {x,y} = getXY(e);
-        ctx.lineTo(x,y);
+        const { x, y } = getXY(e);
+        ctx.lineTo(x, y);
         ctx.strokeStyle = "rgba(0,0,0,1)";
-        ctx.lineWidth = 40; 
+        ctx.lineWidth = 50; // pinceau large et fluide
         ctx.lineCap = "round";
+        ctx.lineJoin = "round";
         ctx.stroke();
       }
 
-      function stopScratch(){
-        isDrawing=false;
+      function stopScratch() {
+        isDrawing = false;
         ctx.beginPath();
+        checkReveal();
       }
 
+      // Vérifie si plus de 60 % sont grattés
+      function checkReveal() {
+        const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        let transparentPixels = 0;
+        for (let i = 3; i < pixels.data.length; i += 4) {
+          if (pixels.data[i] < 128) transparentPixels++;
+        }
+        const percent = transparentPixels / (canvas.width * canvas.height);
+        if (percent > 0.6) {
+          canvas.style.opacity = "0";
+          setTimeout(() => (canvas.style.display = "none"), 600);
+        }
+      }
+
+      // Souris
       canvas.addEventListener("mousedown", startScratch);
       canvas.addEventListener("mousemove", drawScratch);
       canvas.addEventListener("mouseup", stopScratch);
-      canvas.addEventListener("mouseleave", stopScratch);
+      canvas.addEventListener("mouseout", stopScratch);
 
+      // Tactile
       canvas.addEventListener("touchstart", startScratch);
-      canvas.addEventListener("touchmove", drawScratch, {passive:false});
+      canvas.addEventListener("touchmove", drawScratch);
       canvas.addEventListener("touchend", stopScratch);
     }
 
-    for(let i=1;i<=12;i++){
-      initScratch("scratch"+i, cards[i-1]);
+    // Initialisation des 12 cartes
+    for (let i = 1; i <= 12; i++) {
+      initScratch("scratch" + i);
     }
   </script>
 </body>
 </html>
-
